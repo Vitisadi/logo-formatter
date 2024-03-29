@@ -18,7 +18,8 @@ To use this script, you need to provide the source image path as an argument. Th
 
 ### Running the Script
 
-Navigate to the directory containing the script and run the following command: `python convert_and_resize_image.py <source_image_path>`
+Navigate to the directory containing the script and run the following command: `python logo-formatter.py <source_image_path>`
+
 Replace `<source_image_path>` with the path to your source image. For example:
 
 ie. python logo-formatter.py ./path/to/your/image.png
