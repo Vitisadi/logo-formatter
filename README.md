@@ -22,5 +22,5 @@ Navigate to the directory containing the script and run the following command: `
 
 Replace `<source_image_path>` with the path to your source image. For example:
 
-ie. python logo-formatter.py ./path/to/your/image.png
+ie. ```python logo-formatter.py ./path/to/your/image.png```
 
