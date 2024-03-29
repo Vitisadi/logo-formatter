@@ -1,8 +1,31 @@
 import argparse
 from PIL import Image
 
+def has_transparency(img):
+    """Check if an image has transparency."""
+    if img.mode == "P":
+      transparent = img.info.get("transparency", -1)
+      for _, index in img.getcolors():
+         if index == transparent:
+               return True
+    elif img.mode == "RGBA":
+      extrema = img.getextrema()
+      if extrema[3][0] < 255:
+         return True
+    return False
+
 def convert_and_resize_image(source_image_path, target_image_path, new_size):
-   image = Image.open(source_image_path).convert("RGBA")
+   # Attempt to open   
+   try:
+      image = Image.open(source_image_path).convert("RGBA")
+   except FileNotFoundError:
+      print(f"Error: The file '{source_image_path}' was not found. Exiting.")
+      return
+
+   # Only process transparent
+   if not has_transparency(image):
+      print("The provided image does not have transparency. Exiting.")
+      return
    
    new_image = Image.new("RGBA", image.size, (0, 0, 0, 0))
    
